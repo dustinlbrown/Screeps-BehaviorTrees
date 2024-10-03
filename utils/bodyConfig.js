@@ -1,4 +1,4 @@
-// bodyConfig.js
+// utils/BodyConfig.js
 
 /**
  * Body Configuration Module
