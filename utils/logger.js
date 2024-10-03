@@ -1,22 +1,48 @@
-// /utils/Logger.js
+// utils/Logger.js
 
-class Logger {
-    static info(message) {
-        console.log(`[INFO] ${message}`);
-    }
+const colors = {
+    INFO: 'green',
+    WARN: 'yellow',
+    ERROR: 'red',
+    DEBUG: 'blue'
+};
 
-    static error(message) {
-        console.log(`[ERROR] ${message}`);
-    }
+const Logger = {
+    /**
+     * Logs an informational message.
+     * @param {string} message - The message to log.
+     * @param {...any} args - Additional arguments.
+     */
+    info: function (message, ...args) {
+        console.log(`<span style="color:${colors.INFO}">INFO: ${message}</span>`, ...args);
+    },
 
-    static warn(message) {
-        console.log(`[WARN] ${message}`);
-    }
+    /**
+     * Logs a warning message.
+     * @param {string} message - The message to log.
+     * @param {...any} args - Additional arguments.
+     */
+    warn: function (message, ...args) {
+        console.log(`<span style="color:${colors.WARN}">WARN: ${message}</span>`, ...args);
+    },
 
-    static debug(message) {
-        // Uncomment the next line to enable debug logs
-        // console.log(`[DEBUG] ${message}`);
+    /**
+     * Logs an error message.
+     * @param {string} message - The message to log.
+     * @param {...any} args - Additional arguments.
+     */
+    error: function (message, ...args) {
+        console.log(`<span style="color:${colors.ERROR}">ERROR: ${message}</span>`, ...args);
+    },
+
+    /**
+     * Logs a debug message.
+     * @param {string} message - The message to log.
+     * @param {...any} args - Additional arguments.
+     */
+    debug: function (message, ...args) {
+        console.log(`<span style="color:${colors.DEBUG}">DEBUG: ${message}</span>`, ...args);
     }
-}
+};
 
 module.exports = Logger;
