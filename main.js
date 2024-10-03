@@ -4,6 +4,7 @@ const Miner = require('creep/Miner');
 const Hauler = require('creep/Hauler');
 const Upgrader = require('creep/Upgrader');
 const Builder = require('creep/Builder');
+const Tower = require('structures/Tower'); // Import the Tower class
 const SpawnManager = require('utils/SpawnManager');
 const MemoryManager = require('utils/MemoryManager');
 const Logger = require('utils/Logger');
@@ -29,6 +30,16 @@ module.exports.loop = function () {
 
     // Initialize Spawn Manager
     SpawnManager.run();
+
+    // Handle all towers
+    const towers = Game.spawns['Spawn1'].room.find(FIND_STRUCTURES, {
+        filter: structure => structure.structureType === STRUCTURE_TOWER
+    });
+
+    for (const tower of towers) {
+        const towerInstance = new Tower(tower);
+        towerInstance.run();
+    }
 
     // Iterate through all creeps and assign roles
     for (const creepName in Game.creeps) {
